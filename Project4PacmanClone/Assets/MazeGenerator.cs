@@ -1,93 +1,90 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
-public class MazeGenerator2D : MonoBehaviour
+public class MazeGenerator : MonoBehaviour
 {
-    public int width = 10;
-    public int height = 10;
-    public GameObject wallPrefab;
-    public GameObject pathPrefab;
-    private int[,] maze;
+    public int width = 10; // Number of cells horizontally
+    public int height = 10; // Number of cells vertically
+    public Tilemap wallTilemap; // Tilemap for walls
+    public Tilemap pathTilemap; // Tilemap for paths
+
+    private bool[,] visited;
 
     void Start()
     {
         GenerateMaze();
-        CreateMazeInUnity();
     }
 
     void GenerateMaze()
     {
-        maze = new int[width, height];
-        List<Vector2Int> walls = new List<Vector2Int>();
-
-        // Initialize the maze with walls
-        for (int x = 0; x < width; x++)
+        visited = new bool[width, height];
+        for (int i = 0; i < width; i++)
         {
-            for (int y = 0; y < height; y++)
+            for (int j = 0; j < height; j++)
             {
-                maze[x, y] = 0;
+                visited[i, j] = false; // Initialize all cells as unvisited
             }
         }
 
-        // Start with a grid of cells (paths)
-        for (int x = 1; x < width; x += 2)
+        RecursiveBacktracking(0, 0); // Start maze generation from the top-left corner
+    }
+
+    void RecursiveBacktracking(int x, int y)
+    {
+        visited[x, y] = true; // Mark current cell as visited
+
+        // Directions for movement (right, left, down, up)
+        int[] directions = { 1, 2, 3, 4 };
+        directions = ShuffleArray(directions); // Randomize the order of directions
+
+        foreach (int dir in directions)
         {
-            for (int y = 1; y < height; y += 2)
+            int nx = x, ny = y;
+            switch (dir)
             {
-                maze[x, y] = 1;
-                walls.Add(new Vector2Int(x, y));
+                case 1: // Right
+                    nx += 1;
+                    break;
+                case 2: // Left
+                    nx -= 1;
+                    break;
+                case 3: // Down
+                    ny += 1;
+                    break;
+                case 4: // Up
+                    ny -= 1;
+                    break;
+            }
+
+            if (nx >= 0 && nx < width && ny >= 0 && ny < height && !visited[nx, ny])
+            {
+                // Connect current cell to next cell
+                pathTilemap.SetTile(new Vector3Int(nx, ny, 0), null); // Ensure path is clear
+                RecursiveBacktracking(nx, ny);
             }
         }
 
-        while (walls.Count > 0)
+        // Place walls around perimeter
+        if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
         {
-            int randomIndex = Random.Range(0, walls.Count);
-            Vector2Int cell = walls[randomIndex];
-            walls.RemoveAt(randomIndex);
-
-            List<Vector2Int> neighbors = GetValidNeighbors(cell);
-
-            if (neighbors.Count > 0)
-            {
-                Vector2Int randomNeighbor = neighbors[Random.Range(0, neighbors.Count)];
-
-                int x = (cell.x + randomNeighbor.x) / 2;
-                int y = (cell.y + randomNeighbor.y) / 2;
-
-                maze[x, y] = 1;
-                walls.Add(randomNeighbor);
-            }
+            wallTilemap.SetTile(new Vector3Int(x, y, 0), wallTilemap.GetTile(new Vector3Int(0, 0, 0)));
+        }
+        else
+        {
+            wallTilemap.SetTile(new Vector3Int(x, y, 0), null);
         }
     }
 
-    List<Vector2Int> GetValidNeighbors(Vector2Int cell)
+    // Fisher-Yates shuffle for array
+    int[] ShuffleArray(int[] arr)
     {
-        List<Vector2Int> neighbors = new List<Vector2Int>();
-
-        if (cell.x > 1 && maze[cell.x - 2, cell.y] == 1) neighbors.Add(new Vector2Int(cell.x - 2, cell.y));
-        if (cell.x < width - 2 && maze[cell.x + 2, cell.y] == 1) neighbors.Add(new Vector2Int(cell.x + 2, cell.y));
-        if (cell.y > 1 && maze[cell.x, cell.y - 2] == 1) neighbors.Add(new Vector2Int(cell.x, cell.y - 2));
-        if (cell.y < height - 2 && maze[cell.x, cell.y + 2] == 1) neighbors.Add(new Vector2Int(cell.x, cell.y + 2));
-
-        return neighbors;
-    }
-
-    void CreateMazeInUnity()
-    {
-        for (int x = 0; x < width; x++)
+        for (int i = arr.Length - 1; i > 0; i--)
         {
-            for (int y = 0; y < height; y++)
-            {
-                Vector3 position = new Vector3(x, y, 0);
-                if (maze[x, y] == 1)
-                {
-                    Instantiate(pathPrefab, position, Quaternion.identity);
-                }
-                else
-                {
-                    Instantiate(wallPrefab, position, Quaternion.identity);
-                }
-            }
+            int j = Random.Range(0, i + 1);
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
+        return arr;
     }
 }

@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6471851756251443077}
   - component: {fileID: 4592822282568928580}
-  - component: {fileID: 3355328314068783134}
+  - component: {fileID: -8544367385409496516}
   - component: {fileID: -3728492926736810805}
-  - component: {fileID: 606543891886235092}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -87,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3355328314068783134
+--- !u!95 &-8544367385409496516
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -135,17 +134,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &606543891886235092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2650159873988186391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d6794b4f4053fd4c867d332b4878449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  animator: {fileID: 3355328314068783134}
