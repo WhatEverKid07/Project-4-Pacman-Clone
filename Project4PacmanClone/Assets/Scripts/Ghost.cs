@@ -20,8 +20,10 @@ public class Ghost : MonoBehaviour
         abilitySlider.minValue = 0;
         abilityLengh.minValue = 0;
         abilitySlider.value = 0;
-        abilityLengh.value = abilityLengh.maxValue;
+        abilityLengh.value = 0;
         abilitySlider.value = abilitySlider.maxValue;
+        InvokeRepeating("LoseAbility", 0f, 0.2f);
+
     }
 
     void Update()
@@ -41,12 +43,10 @@ public class Ghost : MonoBehaviour
         }
         if (isUsingAbility)
         {
-            LoseAbility();
             //ghostCollider.enabled = false;
             //StartCoroutine(DuringAbility());
         }
     }
-
     private IEnumerator DuringAbility()
     {
         yield return new WaitForSeconds(abilityLenghInSeconds);
@@ -55,8 +55,12 @@ public class Ghost : MonoBehaviour
     }
     void LoseAbility()
     {
-        GainAbility();
-        abilityLengh.value -= 1;
+        //GainAbility();
+        abilityLengh.value += 1;
+        if (abilityLengh.value == abilityLengh.maxValue)
+        {
+            CancelInvoke();
+        }
     }
     void GainAbility()
     {
