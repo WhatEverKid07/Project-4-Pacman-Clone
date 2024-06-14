@@ -28,28 +28,30 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerOne()
     {
         CheckAnimations();
-        // Get input from WASD keys
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
-        // Create a new vector for movement
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        // Apply movement to the Rigidbody2D
         rb.velocity = movement * speed;
+
+        //make the player NOT smoothley stop
+        if (movement == Vector2.zero)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
     private void PlayerTwo()
     {
         GhostSprites();
-        // Get input from WASD keys
         float moveHorizontal2 = Input.GetAxis("Horizontal2");
         float moveVertical2 = Input.GetAxis("Vertical2");
-
-        // Create a new vector for movement
         Vector2 movement2 = new Vector2(moveHorizontal2, moveVertical2);
-
-        // Apply movement to the Rigidbody2D
         rb2.velocity = movement2 * speed2;
+
+        //make the player NOT smoothley stop
+        if (movement2 == Vector2.zero)
+        {
+            rb2.velocity = Vector2.zero;
+        }
     }
 
     private void GhostSprites()
