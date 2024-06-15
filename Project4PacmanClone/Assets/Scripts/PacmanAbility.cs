@@ -5,24 +5,26 @@ using UnityEngine.UI;
 
 public class PacmanAbility : MonoBehaviour
 {
-    [SerializeField] private float coolDownForGoingThroughWalls;
-    [SerializeField] private float boostSpeed;
+    [SerializeField] private float coolDownForAbility;
+    [SerializeField] private float lenghOfSpeedBoost;
+    [SerializeField] private float speedMultiplier;
     [SerializeField] private Slider abilitySlider;
     [SerializeField] private PlayerMovement playerController;
 
     private CircleCollider2D pacmanCollider;
     private Rigidbody2D pacmanRigidbody;
-
+    
     private bool isBoosting = false;
+    /*
     private float boostDuration = 0.2f; // Duration of the boost
     private float boostEndTime = 0f;
-
+    */
     void Start()
     {
         pacmanCollider = GetComponent<CircleCollider2D>();
         pacmanRigidbody = GetComponent<Rigidbody2D>();
 
-        abilitySlider.maxValue = coolDownForGoingThroughWalls;
+        abilitySlider.maxValue = coolDownForAbility;
         abilitySlider.value = 0f;
         InvokeRepeating("CoolDownRegen", 1f, 0.1f);
     }
@@ -31,9 +33,10 @@ public class PacmanAbility : MonoBehaviour
     {
         if (abilitySlider.value == abilitySlider.maxValue && Input.GetKeyDown(KeyCode.Space))
         {
-            Boost();
+            InvokeRepeating("Boost", 0f, 1f);
+            UsingAbility();
         }
-
+        /*
         if (isBoosting && Time.time < boostEndTime)
         {
             Vector2 boostDirection = pacmanRigidbody.velocity.normalized;
@@ -44,6 +47,7 @@ public class PacmanAbility : MonoBehaviour
             isBoosting = false;
             pacmanRigidbody.velocity = pacmanRigidbody.velocity.normalized * playerController.speed; // Resume normal speed
         }
+        */
     }
 
     private void CoolDownRegen()
@@ -63,34 +67,29 @@ public class PacmanAbility : MonoBehaviour
     {
         Debug.Log("ABILITY");
 
-        isBoosting = true;
-        boostEndTime = Time.time + boostDuration;
-
-        abilitySlider.value -= coolDownForGoingThroughWalls;
-        if (abilitySlider.value < 0f)
-        {
-            abilitySlider.value = 0f;
-        }
-        InvokeRepeating("CoolDownRegen", 1f, 0.1f);
-    }
-
-    /*
-    private void UsingAbility()
-    {
-        Debug.Log("ABILITY");
+        //isBoosting = true;
+        //boostEndTime = Time.time + boostDuration;
 
         if (abilitySlider.value > 0f)
         {
+            //The ability
 
-
-            abilitySlider.value -= coolDownForGoingThroughWalls;
+            abilitySlider.value -= lenghOfSpeedBoost;
         }
         else if (abilitySlider.value == 0f)
         {
-            abilitySlider.maxValue = coolDownForGoingThroughWalls;
+            //go back to normal
+            playerController.speed /= speedMultiplier;
+            abilitySlider.maxValue = coolDownForAbility;
             CancelInvoke();
             InvokeRepeating("CoolDownRegen", 1f, 0.1f);
         }
     }
-    */
+
+    
+    private void UsingAbility()
+    {
+        playerController.speed *= speedMultiplier;
+    }
+    
 }

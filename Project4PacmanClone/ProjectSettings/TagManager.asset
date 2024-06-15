@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PacMan
   - Ghost
+  - Point
   layers:
   - Default
   - TransparentFX
