@@ -799,7 +799,7 @@ PrefabInstance:
       addedObject: {fileID: 1493226788}
     - targetCorrespondingSourceObject: {fileID: 4180863667871114206, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1493226791}
+      addedObject: {fileID: 1493226794}
   m_SourcePrefab: {fileID: 100100000, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
 --- !u!1 &915553055 stripped
 GameObject:
@@ -1105,7 +1105,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.13
---- !u!114 &1493226791
+--- !u!114 &1493226794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1117,9 +1117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a9694e03b8f148ae5f2614bbb4139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownForGoingThroughWalls: 10
-  boostSpeed: 20
+  coolDownForGoingThroughWalls: 15
+  boostSpeed: 1000
   abilitySlider: {fileID: 1988484586}
+  playerController: {fileID: 1755745779}
 --- !u!1 &1573438742
 GameObject:
   m_ObjectHideFlags: 0

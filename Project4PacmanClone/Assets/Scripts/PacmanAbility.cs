@@ -7,16 +7,20 @@ public class PacmanAbility : MonoBehaviour
 {
     [SerializeField] private float coolDownForGoingThroughWalls;
     [SerializeField] private float boostSpeed;
-
     [SerializeField] private Slider abilitySlider;
+    [SerializeField] private PlayerMovement playerController;
 
     private CircleCollider2D pacmanCollider;
-    private Rigidbody2D pacmanRigibody;
+    private Rigidbody2D pacmanRigidbody;
+
+    private bool isBoosting = false;
+    private float boostDuration = 0.2f; // Duration of the boost
+    private float boostEndTime = 0f;
 
     void Start()
     {
         pacmanCollider = GetComponent<CircleCollider2D>();
-        pacmanRigibody = GetComponent<Rigidbody2D>();
+        pacmanRigidbody = GetComponent<Rigidbody2D>();
 
         abilitySlider.maxValue = coolDownForGoingThroughWalls;
         abilitySlider.value = 0f;
@@ -27,7 +31,18 @@ public class PacmanAbility : MonoBehaviour
     {
         if (abilitySlider.value == abilitySlider.maxValue && Input.GetKeyDown(KeyCode.Space))
         {
-            InvokeRepeating("UsingAbility", 0f, 1f);
+            Boost();
+        }
+
+        if (isBoosting && Time.time < boostEndTime)
+        {
+            Vector2 boostDirection = pacmanRigidbody.velocity.normalized;
+            pacmanRigidbody.velocity = boostDirection * boostSpeed;
+        }
+        else if (isBoosting && Time.time >= boostEndTime)
+        {
+            isBoosting = false;
+            pacmanRigidbody.velocity = pacmanRigidbody.velocity.normalized * playerController.speed; // Resume normal speed
         }
     }
 
@@ -40,21 +55,32 @@ public class PacmanAbility : MonoBehaviour
         else if (abilitySlider.value == abilitySlider.maxValue)
         {
             Debug.Log("Full Bar");
-            CancelInvoke();
+            CancelInvoke("CoolDownRegen");
         }
     }
 
+    private void Boost()
+    {
+        Debug.Log("ABILITY");
+
+        isBoosting = true;
+        boostEndTime = Time.time + boostDuration;
+
+        abilitySlider.value -= coolDownForGoingThroughWalls;
+        if (abilitySlider.value < 0f)
+        {
+            abilitySlider.value = 0f;
+        }
+        InvokeRepeating("CoolDownRegen", 1f, 0.1f);
+    }
+
+    /*
     private void UsingAbility()
     {
         Debug.Log("ABILITY");
 
         if (abilitySlider.value > 0f)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            pacmanRigibody.velocity = movement * boostSpeed;
 
 
             abilitySlider.value -= coolDownForGoingThroughWalls;
@@ -66,4 +92,5 @@ public class PacmanAbility : MonoBehaviour
             InvokeRepeating("CoolDownRegen", 1f, 0.1f);
         }
     }
+    */
 }
