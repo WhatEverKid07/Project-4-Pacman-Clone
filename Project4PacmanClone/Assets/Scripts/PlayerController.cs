@@ -1,28 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Movement speed
+    [Header("---Pacman---")]
+    [SerializeField] private Rigidbody2D rb;
     public float speed = 5f;
-    public float speed2 = 5f;
-    public Animator animator;
-    public Animator animator2;
+    [SerializeField] private Animator animator;
 
-    // Reference to the Rigidbody2D component
-    public Rigidbody2D rb;
-    public Rigidbody2D rb2;
+    [Header("---Ghost---")]
+    [SerializeField] private Rigidbody2D rb2;
+    public float speed2 = 5f;
+    [SerializeField] private Animator animator2;
 
     [HideInInspector]
     public bool isGhostDead;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //rb = GetComponent<Rigidbody2D>();
-        //rb2 = GetComponent<Rigidbody2D>();
-    }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerOne();
