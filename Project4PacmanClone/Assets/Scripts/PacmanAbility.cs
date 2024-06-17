@@ -36,18 +36,6 @@ public class PacmanAbility : MonoBehaviour
             InvokeRepeating("Boost", 0f, 1f);
             UsingAbility();
         }
-        /*
-        if (isBoosting && Time.time < boostEndTime)
-        {
-            Vector2 boostDirection = pacmanRigidbody.velocity.normalized;
-            pacmanRigidbody.velocity = boostDirection * boostSpeed;
-        }
-        else if (isBoosting && Time.time >= boostEndTime)
-        {
-            isBoosting = false;
-            pacmanRigidbody.velocity = pacmanRigidbody.velocity.normalized * playerController.speed; // Resume normal speed
-        }
-        */
     }
 
     private void CoolDownRegen()
@@ -86,7 +74,7 @@ public class PacmanAbility : MonoBehaviour
         }
     }
 
-    
+
     private void UsingAbility()
     {
         playerController.speed *= speedMultiplier;

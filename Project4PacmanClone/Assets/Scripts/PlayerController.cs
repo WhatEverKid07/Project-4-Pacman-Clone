@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Rigidbody2D rb2;
 
+    [HideInInspector]
+    public bool isGhostDead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +44,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void PlayerTwo()
     {
-        GhostSprites();
+        if(!isGhostDead)
+        {
+            GhostSprites();
+            print("GHOST IS DEAD");
+        }
         float moveHorizontal2 = Input.GetAxis("Horizontal2");
         float moveVertical2 = Input.GetAxis("Vertical2");
         Vector2 movement2 = new Vector2(moveHorizontal2, moveVertical2);
@@ -56,19 +63,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void GhostSprites()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isGhostDead)
         {
             animator2.SetTrigger("GhostLeft");
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !isGhostDead)
         {
             animator2.SetTrigger("GhostRight");
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !isGhostDead)
         {
             animator2.SetTrigger("GhostUp");
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !isGhostDead)
         {
             animator2.SetTrigger("GhostDown");
         }
