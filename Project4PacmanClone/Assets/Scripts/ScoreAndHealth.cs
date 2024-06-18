@@ -8,26 +8,31 @@ public class ScoreAndHealth : MonoBehaviour
     [SerializeField] private GameObject lifePrefab;
     [SerializeField] private Transform startPoint;
     [Space (5)]
-    [SerializeField] private int lives;
+    public int lives;
     [Space (5)]
     [SerializeField] private float spacing = 1f;
-    [ContextMenu("UpdateLifeDisplay")]
+    //[ContextMenu("UpdateLifeDisplay")]
 
-    /*
-    [SerializeField] private int pacmanHealthInt;
-    [SerializeField] private Text pacmanHealth;
-    [SerializeField] private Text pacmanScore;
-    [SerializeField] private Image deadGhost;
-    [SerializeField] private Image deadGhost2;
-    [SerializeField] private Image aliveGhost;
+    private PlayerMovement playerMovement;
+    private KillGhost killGhost;
+
+    
+    //[SerializeField] private int pacmanHealthInt;
+    //[SerializeField] private Text pacmanHealth;
+    //[SerializeField] private Text pacmanScore;
+    //[SerializeField] private Image deadGhost;
+    //[SerializeField] private Image deadGhost2;
+    //[SerializeField] private Image aliveGhost;
     
     public PlayerMovement playerController;
     [SerializeField] private Animator ghostAnimator;
     public GameObject ghost;
-    */
+    
 
     private void Start()
     {
+        playerMovement = Component.FindObjectOfType<PlayerMovement>();
+        killGhost = Component.FindObjectOfType<KillGhost>();
         //pacmanHealth.text = pacmanHealthInt.ToString();
         UpdateLifeDisplay();
     }
@@ -46,22 +51,28 @@ public class ScoreAndHealth : MonoBehaviour
             Instantiate(lifePrefab, position, Quaternion.identity, transform);
         }
     }
-    public void SetLives(int newLives)
+    public void RemoveLife(int newLives)
     {
-        lives = newLives;
+        lives -= newLives;
+        UpdateLifeDisplay();
+        playerMovement.KillPacman();
+    }
+    public void AddLives(int newLives)
+    {
+        lives += newLives;
         UpdateLifeDisplay();
     }
-    /*
 
+    public bool L = true;
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.C))
+        if(lives == 0 && L)
         {
-            playerController.isGhostDead = true;
-            ghost.tag = "DeadGhost";
-            ghostAnimator.SetTrigger("IsDead");
-            StartCoroutine(IsGhostedDead());
+            //playerMovement.KillPacman();
+            print("GAME OVER");
+            L = false;
         }
+
     }
 
     public void DeadGhost()
@@ -78,6 +89,7 @@ public class ScoreAndHealth : MonoBehaviour
         playerController.isGhostDead = false;
         ghost.tag = "Ghost";
         ghostAnimator.SetTrigger("GhostUp");
+        killGhost.canKillPacman = true;
     }
-    */
+    
 }

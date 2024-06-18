@@ -456,6 +456,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418107519}
   m_CullTransparentMesh: 1
+--- !u!1 &472471643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 472471644}
+  m_Layer: 0
+  m_Name: PacmanRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472471644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472471643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.25, y: -3.13, z: -0.057834424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +714,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc8695beecd97cd4987c8bc206d5a754, type: 3}
+--- !u!1 &740676843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650159873988186391, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
+  m_PrefabInstance: {fileID: 1793324578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &797168486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,6 +873,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc8695beecd97cd4987c8bc206d5a754, type: 3}
+--- !u!1 &918398446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180863667871114206, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
+  m_PrefabInstance: {fileID: 797168486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1050733837
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +926,10 @@ MonoBehaviour:
   startPoint: {fileID: 1050733838}
   lives: 3
   spacing: 0.8
+  playerController: {fileID: 1755745779}
+  ghostAnimator: {fileID: 1950133423}
+  ghost: {fileID: 740676843}
+  L: 1
 --- !u!1 &1068781364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1216,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 987149224899737075, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
   m_PrefabInstance: {fileID: 797168486}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &1493226788 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2142889284370884023, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
+  m_PrefabInstance: {fileID: 797168486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573438742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,10 +1470,15 @@ MonoBehaviour:
   rb: {fileID: 1493226784}
   speed: 5
   animator: {fileID: 1493226785}
+  pacCollider: {fileID: 1493226788}
+  pacman: {fileID: 918398446}
   rb2: {fileID: 1950133419}
   speed2: 5
   animator2: {fileID: 1950133423}
+  spawnLocation: {fileID: 472471644}
   isGhostDead: 0
+  canMove: 0
+  canMove2: 0
 --- !u!4 &1755745780
 Transform:
   m_ObjectHideFlags: 0
@@ -1619,7 +1674,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2650159873988186391, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950133428}
   m_SourcePrefab: {fileID: 100100000, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
 --- !u!1001 &1936414852
 PrefabInstance:
@@ -1757,6 +1815,21 @@ Animator:
   m_CorrespondingSourceObject: {fileID: -8544367385409496516, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
   m_PrefabInstance: {fileID: 1793324578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950133428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740676843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df32270f1ab159f4a8c1736b5eb20140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostAnimator: {fileID: 1950133423}
+  pacmanAnimator: {fileID: 1493226785}
+  canKillPacman: 1
 --- !u!1 &1979294760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7870988791677766781, guid: fad2550e7a7f0204f92aca3bc09164df, type: 3}
@@ -1774,7 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624a88756e56c54e80cd625819f0830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreAndHealth: {fileID: 0}
 --- !u!1 &1988484584
 GameObject:
   m_ObjectHideFlags: 0
