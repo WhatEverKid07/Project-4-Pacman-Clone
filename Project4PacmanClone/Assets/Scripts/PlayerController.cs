@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2;
     public float speed2 = 5f;
     [SerializeField] private Animator animator2;
+    [SerializeField] private CircleCollider2D ghostCollider;
+    [SerializeField] private GameObject ghost;
 
     [Space(20)]
 
     [SerializeField] private Transform spawnLocation;
+    [SerializeField] private Transform ghostSpawnLocation;
 
     [HideInInspector]
     public bool isGhostDead;
@@ -141,5 +144,28 @@ public class PlayerMovement : MonoBehaviour
         }
         scoreAndHealth.L = true;
         canMove = true;
+    }
+
+    public void KillGhost()
+    {
+        rb2.velocity = Vector2.zero;
+        rb2.angularVelocity = 0;
+        canMove2 = false;
+        ghostCollider.enabled = false;
+        StartCoroutine(RespawnGhost());
+    }
+
+    private IEnumerator RespawnGhost()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ghost.transform.position = ghostSpawnLocation.transform.position;
+        ghostCollider.enabled = true;
+        animator2.SetTrigger("GhostRight");
+        if (scoreAndHealth.lives == 0)
+        {
+            scoreAndHealth.AddLives(3);
+        }
+        //scoreAndHealth.R = true;
+        canMove2 = true;
     }
 }

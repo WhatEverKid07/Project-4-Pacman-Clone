@@ -6,13 +6,16 @@ public class KillGhost : MonoBehaviour
 {
     [SerializeField] private Animator ghostAnimator;
     [SerializeField] private Animator pacmanAnimator;
+    [SerializeField] private Transform ghostReSpawn;
     public bool canKillPacman;
     
     private ScoreAndHealth scoreAndHealth;
+    private PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
         scoreAndHealth = Component.FindObjectOfType<ScoreAndHealth>();
+        playerMovement = Component.FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -29,9 +32,9 @@ public class KillGhost : MonoBehaviour
             scoreAndHealth.RemoveLife(1);
 
         }
-        else
+        else if(collision.gameObject.CompareTag("PacMan") && !canKillPacman)
         {
-
+            playerMovement.KillGhost();
             print("ghost dead");
         }
     }
