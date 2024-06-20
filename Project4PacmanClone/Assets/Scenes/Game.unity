@@ -2018,7 +2018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6471851756251443077, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.15
+      value: 42.12
       objectReference: {fileID: 0}
     - target: {fileID: 6471851756251443077, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2114,6 +2114,7 @@ MonoBehaviour:
   specialFloorPrefab: {fileID: 7870988791677766781, guid: fad2550e7a7f0204f92aca3bc09164df, type: 3}
   wallPrefab: {fileID: 4737307442952951163, guid: b6e6b3c1779dfef4da3dafa2318ed3c7, type: 3}
   specialFloorCount: 20
+  existingFloorCount: 0
 --- !u!50 &1950133419 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: -3728492926736810805, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}

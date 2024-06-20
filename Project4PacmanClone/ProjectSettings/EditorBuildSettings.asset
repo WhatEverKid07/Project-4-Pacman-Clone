@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/End.unity
+    path: Assets/Scenes/GhostEnd.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 56adce5a0305c67468c1ee732b7cc5bf
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 9f527d0750b317f4fa559f73294cd289
+  - enabled: 1
+    path: Assets/Scenes/PacmanEnd.unity
+    guid: f25ba1a6f205a7c47ab759f4eeb87f50
   m_configObjects: {}

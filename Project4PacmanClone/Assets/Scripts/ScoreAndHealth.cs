@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreAndHealth : MonoBehaviour
@@ -70,6 +71,7 @@ public class ScoreAndHealth : MonoBehaviour
         {
             //playerMovement.KillPacman();
             print("GAME OVER");
+            Invoke("GameOver", 1f);
             L = false;
         }
 
@@ -91,5 +93,8 @@ public class ScoreAndHealth : MonoBehaviour
         ghostAnimator.SetTrigger("GhostUp");
         killGhost.canKillPacman = true;
     }
-    
+    private void GameOver()
+    {
+        SceneManager.LoadScene("GhostEnd");
+    }
 }
