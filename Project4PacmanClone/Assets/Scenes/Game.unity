@@ -1314,6 +1314,95 @@ MonoBehaviour:
   animator: {fileID: 1493226785}
   pacCollider: {fileID: 1493226788}
   pacman: {fileID: 918398446}
+  pacmanControls:
+    m_Name: Pacman Controls
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ec6f0e2c-3367-4f8f-8515-51f6c49a19f9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: WASD
+      m_Id: b76a2857-e3d1-421d-8e00-8fc87af0e71f
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 71762bd0-bc1d-4233-9c14-75391f782ddd
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: down
+      m_Id: b8927dc7-c2e5-4f0a-9ee8-3bb0ac359594
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: left
+      m_Id: afe6f834-a777-4826-80b5-7c7a99db014b
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: right
+      m_Id: c8ca3e9b-59cc-4fd0-9a42-01b46233b171
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: Test
+      m_Id: c01e30bd-991e-4bff-b4f7-1cef25d04b00
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 4854f20d-7bf3-4eb8-8d44-5c1e20e3ee95
+      m_Path: <Pointer>/delta/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 4381a601-609f-4270-b3d3-e9b6d68aaca5
+      m_Path: <Pointer>/delta/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 9ddc35ed-e137-441e-aa80-bb185b2ebb08
+      m_Path: <Pointer>/delta/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    - m_Name: right
+      m_Id: f1f23788-1141-40b0-8a4c-27caa1bf7028
+      m_Path: <Pointer>/delta/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pacman Controls
+      m_Flags: 8
+    m_Flags: 0
   rb2: {fileID: 1950133419}
   speed2: 5
   animator2: {fileID: 1950133423}

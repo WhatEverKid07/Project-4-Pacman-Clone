@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private CircleCollider2D pacCollider;
     [SerializeField] private GameObject pacman;
+    public InputAction pacmanControls;
 
     [Header("---Ghost---")]
     [SerializeField] private Rigidbody2D rb2;
@@ -36,6 +38,15 @@ public class PlayerMovement : MonoBehaviour
         canMove2 = true;
     }
 
+    private void OnEnable()
+    {
+        pacmanControls.Enable();
+    }
+    private void OnDisable()
+    {
+        pacmanControls.Disable();
+    }
+
     void Update()
     {
         if (canMove)
@@ -50,9 +61,10 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerOne()
     {
         CheckAnimations();
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
+        Vector2 movement = pacmanControls.ReadValue<Vector2>();
+        //new Vector2(moveHorizontal, moveVertical);
         rb.velocity = movement * speed;
 
         //make the player NOT smoothley stop
@@ -84,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GhostSprites()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !isGhostDead)
         {
             animator2.SetTrigger("GhostLeft");
@@ -100,6 +113,9 @@ public class PlayerMovement : MonoBehaviour
         {
             animator2.SetTrigger("GhostDown");
         }
+        */
+
+
     }
 
     private void CheckAnimations()
