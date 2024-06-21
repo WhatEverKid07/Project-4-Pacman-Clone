@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator2;
     [SerializeField] private CircleCollider2D ghostCollider;
     [SerializeField] private GameObject ghost;
+    public InputAction ghostControls;
 
     [Space(20)]
 
@@ -41,10 +41,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         pacmanControls.Enable();
+        ghostControls.Enable();
     }
+
     private void OnDisable()
     {
         pacmanControls.Disable();
+        ghostControls.Disable();
     }
 
     void Update()
@@ -58,92 +61,80 @@ public class PlayerMovement : MonoBehaviour
             PlayerTwo();
         }
     }
+
     private void PlayerOne()
     {
-        CheckAnimations();
-        //float moveHorizontal = Input.GetAxis("Horizontal");
-        //float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = pacmanControls.ReadValue<Vector2>();
-        //new Vector2(moveHorizontal, moveVertical);
         rb.velocity = movement * speed;
 
-        //make the player NOT smoothley stop
         if (movement == Vector2.zero)
         {
             rb.velocity = Vector2.zero;
+            ResetPacmanAnimations();
+        }
+        else
+        {
+            UpdatePacmanAnimation(movement);
         }
     }
+
     private void PlayerTwo()
     {
-        
-        if(!isGhostDead)
-        {
-            GhostSprites();
-            //print("GHOST IS DEAD");
-        }
-        
-        float moveHorizontal2 = Input.GetAxis("Horizontal2");
-        float moveVertical2 = Input.GetAxis("Vertical2");
-        Vector2 movement2 = new Vector2(moveHorizontal2, moveVertical2);
+        Vector2 movement2 = ghostControls.ReadValue<Vector2>();
         rb2.velocity = movement2 * speed2;
 
-        //make the player NOT smoothley stop
-        if (movement2 == Vector2.zero)
+        if (!isGhostDead)
         {
-            rb2.velocity = Vector2.zero;
+            if (movement2 == Vector2.zero)
+            {
+                rb2.velocity = Vector2.zero;
+                ResetGhostAnimations();
+            }
+            else
+            {
+                UpdateGhostAnimation(movement2);
+            }
         }
     }
 
-    private void GhostSprites()
+    private void UpdatePacmanAnimation(Vector2 movement)
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isGhostDead)
-        {
-            animator2.SetTrigger("GhostLeft");
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !isGhostDead)
-        {
-            animator2.SetTrigger("GhostRight");
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !isGhostDead)
-        {
-            animator2.SetTrigger("GhostUp");
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow) && !isGhostDead)
-        {
-            animator2.SetTrigger("GhostDown");
-        }
-        */
-
-
+        animator.SetBool("PacmanRight 0", movement.x > 0);
+        animator.SetBool("PacmanLeft 0", movement.x < 0);
+        animator.SetBool("PacmanUp 0", movement.y > 0);
+        animator.SetBool("PacmanDown 0", movement.y < 0);
     }
 
-    private void CheckAnimations()
+    private void ResetPacmanAnimations()
     {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            animator.SetTrigger("PacmanUp");
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            animator.SetTrigger("PacmanLeft");
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            animator.SetTrigger("PacmanDown");
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            animator.SetTrigger("PacmanRight");
-        }
+        animator.SetBool("PacmanRight 0", false);
+        animator.SetBool("PacmanLeft 0", false);
+        animator.SetBool("PacmanUp 0", false);
+        animator.SetBool("PacmanDown 0", false);
+    }
+
+    private void UpdateGhostAnimation(Vector2 movement)
+    {
+        animator2.SetBool("GhostRight", movement.x > 0);
+        animator2.SetBool("GhostLeft", movement.x < 0);
+        animator2.SetBool("GhostUp", movement.y > 0);
+        animator2.SetBool("GhostDown", movement.y < 0);
+    }
+
+    private void ResetGhostAnimations()
+    {
+        animator2.SetBool("GhostRight", false);
+        animator2.SetBool("GhostLeft", false);
+        animator2.SetBool("GhostUp", false);
+        animator2.SetBool("GhostDown", false);
     }
 
     public void KillPacman()
     {
+        pacCollider.enabled = false;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
         canMove = false;
-        pacCollider.enabled = false;
         animator.SetTrigger("PacmanDead");
         StartCoroutine(RespawnPacman());
     }
@@ -153,8 +144,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         pacman.transform.position = spawnLocation.transform.position;
         pacCollider.enabled = true;
-        animator.SetTrigger("PacmanRight");
-        if(scoreAndHealth.lives == 0)
+        ResetPacmanAnimations();
+        if (scoreAndHealth.lives == 0)
         {
             scoreAndHealth.AddLives(3);
         }
@@ -176,12 +167,11 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         ghost.transform.position = ghostSpawnLocation.transform.position;
         ghostCollider.enabled = true;
-        animator2.SetTrigger("GhostRight");
+        ResetGhostAnimations();
         if (scoreAndHealth.lives == 0)
         {
             scoreAndHealth.AddLives(3);
         }
-        //scoreAndHealth.R = true;
         canMove2 = true;
     }
 }

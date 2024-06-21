@@ -8,6 +8,7 @@ public class KillGhost : MonoBehaviour
     [SerializeField] private Animator pacmanAnimator;
     [SerializeField] private Transform ghostReSpawn;
     public bool canKillPacman;
+    private bool KILL = true;
     
     private ScoreAndHealth scoreAndHealth;
     private PlayerMovement playerMovement;
@@ -18,24 +19,24 @@ public class KillGhost : MonoBehaviour
         playerMovement = Component.FindObjectOfType<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PacMan") && canKillPacman)
+        if (collision.gameObject.CompareTag("PacMan") && canKillPacman && KILL)
         {
+            KILL = false;
             print("pacman dead");
             scoreAndHealth.RemoveLife(1);
-
+            Invoke("KillBoolSetToTrue", 1f);
         }
         else if(collision.gameObject.CompareTag("PacMan") && !canKillPacman)
         {
             playerMovement.KillGhost();
             print("ghost dead");
         }
+    }
+
+    private void KillBoolSetToTrue()
+    {
+        KILL = true;
     }
 }
