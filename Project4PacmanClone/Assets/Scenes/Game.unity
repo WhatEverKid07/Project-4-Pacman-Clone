@@ -380,6 +380,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219500539}
   m_CullTransparentMesh: 1
+--- !u!1 &343269302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343269303}
+  - component: {fileID: 343269304}
+  m_Layer: 0
+  m_Name: GhostDead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343269303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343269302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001101820}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &343269304
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343269302}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 62d7f1362327e984189fb5d960f9f755, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &418107519
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +919,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4180863667871114206, guid: 6d504d2bb671dc445bbb12322c40e1b0, type: 3}
   m_PrefabInstance: {fileID: 797168486}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1001101819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001101820}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001101820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001101819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.7337036, y: 11.108989, z: -0.019335944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1643947970}
+  - {fileID: 343269303}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020769374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1365,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573438742}
   m_CullTransparentMesh: 1
+--- !u!1 &1643947969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643947970}
+  - component: {fileID: 1643947971}
+  m_Layer: 0
+  m_Name: PacmanDead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1643947970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643947969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001101820}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1643947971
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643947969}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ae7cd0a4337921b49a48923f639c62a0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1655819859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,8 +1655,8 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Pacman Controls
       m_Flags: 8
-    - m_Name: Test
-      m_Id: c01e30bd-991e-4bff-b4f7-1cef25d04b00
+    - m_Name: JoyStick
+      m_Id: 6ffaa51b-e215-4e64-a2c1-ad626c669929
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
@@ -1375,32 +1664,32 @@ MonoBehaviour:
       m_Action: Pacman Controls
       m_Flags: 4
     - m_Name: up
-      m_Id: 4854f20d-7bf3-4eb8-8d44-5c1e20e3ee95
-      m_Path: <Mouse>/delta/up
+      m_Id: 43d59fb1-84e4-4fe6-9a8a-2f6805ec24b9
+      m_Path: <XInputController>/leftStick/up
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Pacman Controls
       m_Flags: 8
     - m_Name: down
-      m_Id: 4381a601-609f-4270-b3d3-e9b6d68aaca5
-      m_Path: <Pointer>/delta/down
+      m_Id: 2cbb3e60-a20f-4be7-969e-e6a130e08155
+      m_Path: <XInputController>/leftStick/down
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Pacman Controls
       m_Flags: 8
     - m_Name: left
-      m_Id: 9ddc35ed-e137-441e-aa80-bb185b2ebb08
-      m_Path: <Pointer>/delta/left
+      m_Id: ebef3358-ed70-4395-b1b8-8e60acce9255
+      m_Path: <XInputController>/leftStick/left
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Pacman Controls
       m_Flags: 8
     - m_Name: right
-      m_Id: f1f23788-1141-40b0-8a4c-27caa1bf7028
-      m_Path: <Pointer>/delta/right
+      m_Id: 5a389cd1-305c-42e3-bf3a-ab5efbccf32c
+      m_Path: <XInputController>/leftStick/right
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -1420,6 +1709,46 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
+    - m_Name: JoyStick
+      m_Id: a34e8a8d-9a46-4ad6-9820-3d9f5aaba27a
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Controls
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 849732d3-5e07-4dbb-9051-bf68a8686548
+      m_Path: <XInputController>/rightStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Controls
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 24e00c2f-1f57-497a-b452-a84c85ca88da
+      m_Path: <XInputController>/rightStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Controls
+      m_Flags: 8
+    - m_Name: left
+      m_Id: c22fb19d-63c9-437f-8e8f-762aa79839d6
+      m_Path: <XInputController>/rightStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Controls
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 2daa1bbf-b28e-4d76-b556-ce67713abbf6
+      m_Path: <XInputController>/rightStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Ghost Controls
+      m_Flags: 8
     - m_Name: Arrows
       m_Id: 53dd2c3e-29d2-4bce-a4de-98cd2d888c04
       m_Path: 2DVector
@@ -1624,7 +1953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6157258379771539182, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6471851756251443077, guid: 7a8fb3e80f501a842bcd387ef8408649, type: 3}
       propertyPath: m_RootOrder
@@ -1769,6 +2098,8 @@ MonoBehaviour:
   ghostAnimator: {fileID: 1950133423}
   pacmanAnimator: {fileID: 1493226785}
   ghostReSpawn: {fileID: 1020769375}
+  ghostDead: {fileID: 343269304}
+  pacmanDead: {fileID: 1643947971}
   canKillPacman: 1
 --- !u!58 &1950133430 stripped
 CircleCollider2D:
@@ -1804,7 +2135,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -7,6 +7,8 @@ public class KillGhost : MonoBehaviour
     [SerializeField] private Animator ghostAnimator;
     [SerializeField] private Animator pacmanAnimator;
     [SerializeField] private Transform ghostReSpawn;
+    [SerializeField] private AudioSource ghostDead;
+    [SerializeField] private AudioSource pacmanDead;
     public bool canKillPacman;
     private bool KILL = true;
     
@@ -24,6 +26,7 @@ public class KillGhost : MonoBehaviour
         if (collision.gameObject.CompareTag("PacMan") && canKillPacman && KILL)
         {
             KILL = false;
+            pacmanDead.Play();
             print("pacman dead");
             scoreAndHealth.RemoveLife(1);
             Invoke("KillBoolSetToTrue", 1f);
@@ -32,6 +35,7 @@ public class KillGhost : MonoBehaviour
         {
             playerMovement.KillGhost();
             print("ghost dead");
+            ghostDead.Play();
         }
     }
 
