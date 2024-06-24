@@ -7,7 +7,7 @@ public class PacmanScore : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     [SerializeField] private int goUp = 10;
-    private static int score;
+    protected static int score;
 
     private ScoreAndHealth scoreAndHealth;
     private KillGhost killGhost;
