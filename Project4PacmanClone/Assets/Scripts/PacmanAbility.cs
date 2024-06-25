@@ -6,21 +6,21 @@ using UnityEngine.UI;
 
 public class PacmanAbility : MonoBehaviour
 {
-    public bool canUseController;
-
     [SerializeField] private float coolDownForAbility;
     [SerializeField] private float lenghOfSpeedBoost;
     [SerializeField] private float speedMultiplier;
+
     [SerializeField] private Slider abilitySlider;
     [SerializeField] private PlayerMovement playerController;
-
-    private InputAction pacmanAbility;
     [SerializeField] private InputActionAsset abilitys;
+
+    [SerializeField] private Text abilityButtonIdentifier;
 
     private CircleCollider2D pacmanCollider;
     private Rigidbody2D pacmanRigidbody;
-    
-    private bool isBoosting = false;
+    private InputAction pacmanAbility;
+
+    public bool canUseController;
 
     void Start()
     {
@@ -35,11 +35,10 @@ public class PacmanAbility : MonoBehaviour
 
     private void OnEnable()
     {
-        // Find the action map and the action
         var playerActionMap = abilitys.FindActionMap("Controls");
         pacmanAbility = playerActionMap.FindAction("PacmanAbility");
-
         pacmanAbility.Enable();
+
         pacmanAbility.performed += OnJumpPerformed;
     }
     private void OnDisable()
@@ -54,9 +53,9 @@ public class PacmanAbility : MonoBehaviour
         {
             InvokeRepeating("Boost", 0f, 1f);
             UsingAbility();
+            abilityButtonIdentifier.text = context.control.displayName;
         }
     }
-
     private void CoolDownRegen()
     {
         if (abilitySlider.value < abilitySlider.maxValue)
@@ -69,34 +68,25 @@ public class PacmanAbility : MonoBehaviour
             CancelInvoke("CoolDownRegen");
         }
     }
-
     private void Boost()
     {
         Debug.Log("ABILITY");
 
-        //isBoosting = true;
-        //boostEndTime = Time.time + boostDuration;
-
         if (abilitySlider.value > 0f)
         {
-            //The ability
-
             abilitySlider.value -= lenghOfSpeedBoost;
         }
         else if (abilitySlider.value == 0f)
         {
-            //go back to normal
             playerController.speed /= speedMultiplier;
             abilitySlider.maxValue = coolDownForAbility;
             CancelInvoke();
+
             InvokeRepeating("CoolDownRegen", 1f, 0.1f);
         }
     }
-
-
     private void UsingAbility()
     {
         playerController.speed *= speedMultiplier;
     }
-    
 }
