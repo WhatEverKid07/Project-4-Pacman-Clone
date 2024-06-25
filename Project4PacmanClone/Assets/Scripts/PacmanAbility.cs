@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PacmanAbility : MonoBehaviour
 {
+    public bool canUseController;
+
     [SerializeField] private float coolDownForAbility;
     [SerializeField] private float lenghOfSpeedBoost;
     [SerializeField] private float speedMultiplier;
     [SerializeField] private Slider abilitySlider;
     [SerializeField] private PlayerMovement playerController;
 
+    private InputAction pacmanAbility;
+    [SerializeField] private InputActionAsset abilitys;
+
     private CircleCollider2D pacmanCollider;
     private Rigidbody2D pacmanRigidbody;
     
     private bool isBoosting = false;
-    /*
-    private float boostDuration = 0.2f; // Duration of the boost
-    private float boostEndTime = 0f;
-    */
+
     void Start()
     {
+        canUseController = true;
         pacmanCollider = GetComponent<CircleCollider2D>();
         pacmanRigidbody = GetComponent<Rigidbody2D>();
 
@@ -29,9 +33,24 @@ public class PacmanAbility : MonoBehaviour
         InvokeRepeating("CoolDownRegen", 1f, 0.1f);
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (abilitySlider.value == abilitySlider.maxValue && Input.GetKeyDown(KeyCode.Space))
+        // Find the action map and the action
+        var playerActionMap = abilitys.FindActionMap("Controls");
+        pacmanAbility = playerActionMap.FindAction("PacmanAbility");
+
+        pacmanAbility.Enable();
+        pacmanAbility.performed += OnJumpPerformed;
+    }
+    private void OnDisable()
+    {
+        pacmanAbility.performed -= OnJumpPerformed;
+        pacmanAbility.Disable();
+    }
+    private void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        print("SPACE");
+        if (abilitySlider.value == abilitySlider.maxValue && canUseController)
         {
             InvokeRepeating("Boost", 0f, 1f);
             UsingAbility();

@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GhostAbility : MonoBehaviour
 {
+    public bool canUseController;
+
     [SerializeField] private float coolDownForGoingThroughWalls;
     [SerializeField] private float abilityLenghInSeconds;
 
     [SerializeField] private Slider abilitySlider;
 
+    private InputAction ghostAbility;
+    [SerializeField] private InputActionAsset abilitys;
+
     private CircleCollider2D ghostCollider;
 
     void Start()
     {
+        canUseController = true;
         ghostCollider = GetComponent<CircleCollider2D>();
 
         abilitySlider.maxValue = coolDownForGoingThroughWalls;
@@ -21,9 +28,24 @@ public class GhostAbility : MonoBehaviour
         InvokeRepeating("CoolDownRegen", 1f, 0.1f);
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (abilitySlider.value == abilitySlider.maxValue && Input.GetKeyDown(KeyCode.RightControl))
+        // Find the action map and the action
+        var playerActionMap = abilitys.FindActionMap("Controls");
+        ghostAbility = playerActionMap.FindAction("GhostAbility");
+
+        ghostAbility.Enable();
+        ghostAbility.performed += OnJumpPerformed;
+    }
+    private void OnDisable()
+    {
+        ghostAbility.performed -= OnJumpPerformed;
+        ghostAbility.Disable();
+    }
+    private void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        print("GHOSTSPACE");
+        if (abilitySlider.value == abilitySlider.maxValue && canUseController)
         {
             abilitySlider.maxValue = abilityLenghInSeconds;
             abilitySlider.value = abilitySlider.maxValue;
