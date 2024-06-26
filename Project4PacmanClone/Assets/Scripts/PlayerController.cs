@@ -32,21 +32,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private List<GameObject> ghostSpawnLocations;
     [SerializeField] private float distance = Mathf.Infinity;
 
-    //[SerializeField] private Vector3 position = transform.position;
-
-
-    [SerializeField] private Transform spawnLocation1;
-    [SerializeField] private Transform spawnLocation2;
-    [SerializeField] private Transform spawnLocation3;
-
-    [SerializeField] private Transform ghostSpawnLocation1;
-    [SerializeField] private Transform ghostSpawnLocation2;
-    [SerializeField] private Transform ghostSpawnLocation3;
-
-    [SerializeField] private Text buttonIdentifier;
-
-    [SerializeField] private Text buttonIdentifier2;
-
     [HideInInspector]
     public bool isGhostDead;
     private ScoreAndHealth scoreAndHealth;
@@ -85,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movement = pacmanControls.ReadValue<Vector2>();
         rb.velocity = movement * speed;
-        buttonIdentifier.text = movement.ToString();
+        //buttonIdentifier.text = movement.ToString();
 
         if (movement == Vector2.zero)
         {
@@ -101,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movement2 = ghostControls.ReadValue<Vector2>();
         rb2.velocity = movement2 * speed2;
-        buttonIdentifier2.text = movement2.ToString();
+        //buttonIdentifier2.text = movement2.ToString();
 
         if (!isGhostDead)
         {
@@ -156,12 +141,34 @@ public class PlayerMovement : MonoBehaviour
 
         canMove = false;
         animator.SetTrigger("PacmanDead");
-        StartCoroutine(RespawnPacman());
+        
+        GameObject furthestGameObject = FindFurthestPacmanRespawnPoint(pacman, pacmanSpawnLocations);
+        if (furthestGameObject != null)
+        {
+            StartCoroutine(RespawnPacman(furthestGameObject.transform.position));
+        }
     }
-    private IEnumerator RespawnPacman()
+
+    GameObject FindFurthestPacmanRespawnPoint(GameObject fromObject, List<GameObject> objects)
+    {
+        GameObject furthestObject = null;
+        float maxDistance = float.MinValue;
+
+        foreach (GameObject obj in objects)
+        {
+            float distance = Vector3.Distance(fromObject.transform.position, obj.transform.position);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                furthestObject = obj;
+            }
+        }
+        return furthestObject;
+    }
+    private IEnumerator RespawnPacman(Vector3 position)
     {
         yield return new WaitForSeconds(1);
-        pacman.transform.position = spawnLocation1.transform.position;
+        pacman.transform.position = position;
         pacCollider.enabled = true;
 
         ResetPacmanAnimations();
@@ -179,24 +186,35 @@ public class PlayerMovement : MonoBehaviour
         canMove2 = false;
 
         ghostCollider.enabled = false;
-        StartCoroutine(RespawnGhost());
+        GameObject furthestGameObject = FindFurthestGhostRespawnPoint(ghost, ghostSpawnLocations);
+        if (furthestGameObject != null)
+        {
+            StartCoroutine(RespawnGhost(furthestGameObject.transform.position));
+        }
     }
-    private IEnumerator RespawnGhost()
+
+
+    GameObject FindFurthestGhostRespawnPoint(GameObject fromObject, List<GameObject> objects)
+    {
+        GameObject furthestObject = null;
+        float maxDistance = float.MinValue;
+
+        foreach (GameObject obj in objects)
+        {
+            float distance = Vector3.Distance(fromObject.transform.position, obj.transform.position);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                furthestObject = obj;
+            }
+        }
+        return furthestObject;
+    }
+    private IEnumerator RespawnGhost(Vector3 position)
     {
         yield return new WaitForSeconds(0.2f);
-        ghost.transform.position = ghostSpawnLocation1.transform.position;
+        ghost.transform.position = position;
         ghostCollider.enabled = true;
-
-        /*
-        foreach (GameObject item in ghostSpawnLocations)
-        {
-            Vector3 diff = item.transform.position + posi
-        }
-        */
-
-
-
-
 
         ResetGhostAnimations();
         if (scoreAndHealth.lives == 0)

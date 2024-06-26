@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "2abbf48a-7a35-45c5-91a6-fd00cbd3d7c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -203,6 +212,28 @@
                 },
                 {
                     "name": "",
+                    "id": "d8f9aac2-3c3d-4ac4-ad7e-f6388517904a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GhostAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a094c69-9932-4a0b-9a87-5247a3df5dff",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GhostAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "67c4c6aa-dfd1-4f24-a2ff-93b806f949ba",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -244,43 +275,37 @@
                     "action": "GhostAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UINavigation",
-            "id": "4656e4a1-9251-4481-afb0-ded1d31ed569",
-            "actions": [
-                {
-                    "name": "Enter",
-                    "type": "Button",
-                    "id": "c3f593a0-3e92-4aff-81b3-c2840550da3d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "7a498361-7f19-4a9b-aefa-a2d6138d6ed2",
-                    "path": "<Keyboard>/enter",
+                    "id": "8b632513-3acf-4dd5-86d9-31541fac4027",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Enter",
+                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3b263bf3-ee3d-4c6d-8cb2-dfbc09f5f8d3",
-                    "path": "<XInputController>/buttonSouth",
+                    "id": "4c0a6d41-b15e-4602-b86c-34e6317aa1c8",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Enter",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d26a9e2-48b6-4692-bf4f-20ec3fcb8769",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

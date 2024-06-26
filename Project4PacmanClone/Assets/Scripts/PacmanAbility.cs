@@ -14,7 +14,6 @@ public class PacmanAbility : MonoBehaviour
     [SerializeField] private PlayerMovement playerController;
     [SerializeField] private InputActionAsset abilitys;
 
-    [SerializeField] private Text abilityButtonIdentifier;
 
     private CircleCollider2D pacmanCollider;
     private Rigidbody2D pacmanRigidbody;
@@ -53,7 +52,6 @@ public class PacmanAbility : MonoBehaviour
         {
             InvokeRepeating("Boost", 0f, 1f);
             UsingAbility();
-            abilityButtonIdentifier.text = context.control.displayName;
         }
     }
     private void CoolDownRegen()

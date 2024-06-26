@@ -10,7 +10,6 @@ public class GhostAbility : MonoBehaviour
     [SerializeField] private float abilityLenghInSeconds;
     [SerializeField] private Slider abilitySlider;
 
-    [SerializeField] private Text abilityButtonIdentifier2;
     [SerializeField] private InputActionAsset abilitys;
 
     private CircleCollider2D ghostCollider;
@@ -45,7 +44,6 @@ public class GhostAbility : MonoBehaviour
         print("GHOSTSPACE");
         if (abilitySlider.value == abilitySlider.maxValue && canUseController)
         {
-            abilityButtonIdentifier2.text = context.control.displayName;
             abilitySlider.maxValue = abilityLenghInSeconds;
             abilitySlider.value = abilitySlider.maxValue;
             
