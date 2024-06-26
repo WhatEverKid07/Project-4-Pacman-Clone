@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,8 +28,21 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(20)]
 
-    [SerializeField] private Transform spawnLocation;
-    [SerializeField] private Transform ghostSpawnLocation;
+    [SerializeField] private List<GameObject> pacmanSpawnLocations;
+    [SerializeField] private List<GameObject> ghostSpawnLocations;
+    [SerializeField] private float distance = Mathf.Infinity;
+
+    //[SerializeField] private Vector3 position = transform.position;
+
+
+    [SerializeField] private Transform spawnLocation1;
+    [SerializeField] private Transform spawnLocation2;
+    [SerializeField] private Transform spawnLocation3;
+
+    [SerializeField] private Transform ghostSpawnLocation1;
+    [SerializeField] private Transform ghostSpawnLocation2;
+    [SerializeField] private Transform ghostSpawnLocation3;
+
     [SerializeField] private Text buttonIdentifier;
 
     [SerializeField] private Text buttonIdentifier2;
@@ -147,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator RespawnPacman()
     {
         yield return new WaitForSeconds(1);
-        pacman.transform.position = spawnLocation.transform.position;
+        pacman.transform.position = spawnLocation1.transform.position;
         pacCollider.enabled = true;
 
         ResetPacmanAnimations();
@@ -170,8 +184,19 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator RespawnGhost()
     {
         yield return new WaitForSeconds(0.2f);
-        ghost.transform.position = ghostSpawnLocation.transform.position;
+        ghost.transform.position = ghostSpawnLocation1.transform.position;
         ghostCollider.enabled = true;
+
+        /*
+        foreach (GameObject item in ghostSpawnLocations)
+        {
+            Vector3 diff = item.transform.position + posi
+        }
+        */
+
+
+
+
 
         ResetGhostAnimations();
         if (scoreAndHealth.lives == 0)

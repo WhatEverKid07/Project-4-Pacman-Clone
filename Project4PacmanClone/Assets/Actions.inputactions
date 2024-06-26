@@ -22,15 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "PauseMenu",
-                    "type": "Button",
-                    "id": "edf151a7-5cac-4c6c-b464-fd33f3148d25",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -212,28 +203,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e81dd678-53ac-47e5-87c2-1da3f97dd494",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GhostAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5a6c44b7-493e-4f76-9f91-3d56832771fb",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GhostAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "67c4c6aa-dfd1-4f24-a2ff-93b806f949ba",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -273,50 +242,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "GhostAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "babc5cd0-8593-45af-b3bf-7e8210d0a8dd",
-                    "path": "<XInputController>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3d4f5870-589e-4120-ab37-c737e3ae0e8c",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "64c25362-833e-46ad-b721-3944a2cf6784",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6d121f4-e3b1-4d88-98ed-14aa6ec51ae3",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
