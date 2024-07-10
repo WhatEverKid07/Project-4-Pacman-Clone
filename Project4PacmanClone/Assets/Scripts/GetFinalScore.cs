@@ -8,6 +8,6 @@ public class GetFinalScore : PacmanScore
     [SerializeField] private Text finalScoreText;
     private void Start()
     {
-        finalScoreText.text = "Score: " + score;
+        finalScoreText.text = score.ToString();
     }
 }

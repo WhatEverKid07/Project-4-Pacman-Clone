@@ -38,6 +38,6 @@ public class PacmanScore : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = score.ToString();
     }
 }
