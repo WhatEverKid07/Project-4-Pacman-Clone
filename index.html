@@ -6,7 +6,7 @@
     <title>Pacman-Clone</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -16,7 +16,9 @@
         }
 
         body {
-            font-family: "Silkscreen", serif;
+            font-family: "Kanit", serif;
+            font-weight: 500;
+            font-style: normal;
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
@@ -29,7 +31,8 @@
         }
 
             header h1 {
-                font-family: "Silkscreen", serif;
+                font-family: "Kanit", serif;
+                font-weight: 500;
                 font-size: 2.5rem;
                 margin-bottom: 10px;
             }
@@ -49,7 +52,8 @@
         }
 
             section h2 {
-                font-family: "Silkscreen", serif;
+                font-family: "Kanit", serif;
+                font-weight: 500;
                 font-size: 2rem;
                 margin-bottom: 10px;
                 color: #444;
@@ -65,36 +69,54 @@
             font-size: 0.9rem;
             color: #777;
         }
+
+        /* Links */
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
+            a:hover {
+                color: red;
+            }
+        /* Custom Classes */
+        .thick-underline {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
     </style>
 
 </head>
 <body>
     <header>
         <h1>Pacman-Clone</h1>
-        <p>A simple customizable website powered by GitHub Pages</p>
+        <p>A 2 local player small solo game made with a randomized map everytime you play</p>
     </header>
 
     <main>
         <section>
             <h2>About</h2>
-            <p>This is a basic template to help you get started with your website. You can edit the content, styles, and layout to suit your needs.</p>
+            <p>This was part of a portfolio building project my college had, we needed to create a small game with something that pushes your skills. I decided to mess around with random map generation, 
+            I also made it a 2 player only game (Pacman and a Ghost). Both players have their own special abilitys they can use as an advantage to win the game.</p>
         </section>
 
         <section>
-            <h2>Features</h2>
-            <p>- Fully customizable</p>
-            <p>- Powered by GitHub Pages</p>
-            <p>- Uses modern web technologies</p>
+            <h2>Process</h2>
+            <p>
+                <span class="thick-underline">Art/Visuals:</span> I found some free sprite sheets for Pacman and the Ghost (along with other assets), which made it easier for me to focus on the technical side of things.
+            </p>
+            <p>
+                <span class="thick-underline">Sound/Music:</span> I got all the audio online to, again, make it easier for me.
+            </p>
+            <p>
+                <span class="thick-underline">Code:</span> The main mechanic (random map generation) was quite difficult and took a while to perfect, reading forums writing and removing code for weeks. 
+                In the end the map generation code isn't perfect, but I'm still proud of what I managed to do in such a small amount of time.
+            </p>
         </section>
 
         <section>
             <h2>Contact</h2>
-            <p>Feel free to reach out with questions or feedback!</p>
+            <p>Feel free to check out my <a href="https://eugeniocl.wixsite.com/eclgamesdesign" target="_blank">portfolio</a> for links to get in touch!</p>
         </section>
     </main>
-
-    <footer>
-        <p>© 2024 My Custom Website. All rights reserved.</p>
-    </footer>
 </body>
 </html>
