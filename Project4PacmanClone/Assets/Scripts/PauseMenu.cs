@@ -85,7 +85,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
 
         gameIsPaused = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         StartCoroutine(SelectFirstButton());
     }
 

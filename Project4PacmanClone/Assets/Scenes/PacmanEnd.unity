@@ -321,7 +321,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae2f0c40844b47340bf2fa113cf3eb5e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1738971818}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &696366738
@@ -469,17 +469,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_PointAction: {fileID: -3095384694197188594, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_MoveAction: {fileID: 7186059605143616195, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_SubmitAction: {fileID: -1671214203031403606, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_CancelAction: {fileID: -727123570509682967, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_LeftClickAction: {fileID: -3990304475500242928, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_MiddleClickAction: {fileID: 505633664035430302, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_RightClickAction: {fileID: -3559907953918387534, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_ScrollWheelAction: {fileID: -8895768712319055679, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -8322387534096813861, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -7482391944072528787, guid: aa20cfbb70d87184fa787ce8c74fa9ca, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
